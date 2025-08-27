@@ -1,0 +1,10 @@
+D:\My Projects\C#\serversil\bin\Release\serversil.exe.config
+D:\My Projects\C#\serversil\bin\Release\serversil.exe
+D:\My Projects\C#\serversil\bin\Release\serversil.pdb
+D:\My Projects\C#\serversil\obj\Release\serversil.csproj.AssemblyReference.cache
+D:\My Projects\C#\serversil\obj\Release\serversil.Form1.resources
+D:\My Projects\C#\serversil\obj\Release\serversil.Properties.Resources.resources
+D:\My Projects\C#\serversil\obj\Release\serversil.csproj.GenerateResource.cache
+D:\My Projects\C#\serversil\obj\Release\serversil.csproj.CoreCompileInputs.cache
+D:\My Projects\C#\serversil\obj\Release\serversil.exe
+D:\My Projects\C#\serversil\obj\Release\serversil.pdb
