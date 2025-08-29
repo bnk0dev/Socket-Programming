@@ -76,3 +76,10 @@ D:\My Projects\C#\SocketProgramming\Server\obj\Debug\serversil.csproj.CoreCompil
 D:\My Projects\C#\SocketProgramming\Server\obj\Debug\serversil.csproj.Up2Date
 D:\My Projects\C#\SocketProgramming\Server\obj\Debug\serversil.exe
 D:\My Projects\C#\SocketProgramming\Server\obj\Debug\serversil.pdb
+D:\My Projects\C#\SocketProgramming\Server\bin\Debug\en\serversil.resources.dll
+D:\My Projects\C#\SocketProgramming\Server\bin\Debug\tr\serversil.resources.dll
+D:\My Projects\C#\SocketProgramming\Server\obj\Debug\en\serversil.resources.dll
+D:\My Projects\C#\SocketProgramming\Server\obj\Debug\tr\serversil.resources.dll
+D:\My Projects\C#\SocketProgramming\Server\obj\Debug\serversil.Resource.resources
+D:\My Projects\C#\SocketProgramming\Server\obj\Debug\serversil.Resource.en.resources
+D:\My Projects\C#\SocketProgramming\Server\obj\Debug\serversil.Resource.tr.resources

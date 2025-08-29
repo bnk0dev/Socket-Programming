@@ -1,12 +1,14 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using serversil.Properties;
+using System;
+using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using ClosedXML.Excel;
-using System.IO;
-using System.Drawing;
 
 namespace serversil
 {
@@ -17,13 +19,20 @@ namespace serversil
         private readonly int serverPort = 5000;
         private bool serverRunning = false;
         private string excelPath = "GelenVeri.xlsx";
-
         private System.Windows.Forms.Timer alertTimer;
         private int alertCounter = 0;
 
         public Form1()
         {
             InitializeComponent();
+
+            // Dil seçenekleri
+            comboBoxLanguage.Items.Add("Türkçe");
+            comboBoxLanguage.Items.Add("English");
+            comboBoxLanguage.SelectedIndex = 0;
+            comboBoxLanguage.SelectedIndexChanged += comboBoxLanguage_SelectedIndexChanged;
+
+            ApplyLanguage();
 
             if (!File.Exists(excelPath))
             {
@@ -38,7 +47,6 @@ namespace serversil
                 }
             }
 
-            // Alert Timer
             alertTimer = new System.Windows.Forms.Timer();
             alertTimer.Interval = 500;
             alertTimer.Tick += AlertTimer_Tick;
@@ -46,7 +54,32 @@ namespace serversil
             btnAlert.BackColor = SystemColors.Control;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+        }
 
+        private void comboBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxLanguage.SelectedItem.ToString() == "English")
+                SetLanguage("en");
+            else
+                SetLanguage("tr");
+
+            ApplyLanguage();
+        }
+
+        private void SetLanguage(string cultureCode)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureCode);
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureCode);
+        }
+
+        private void ApplyLanguage()
+        {
+            this.Text = Resource.App_Title;
+            btnStartServer.Text = Resource.Button_Start;
+            btnStopServer.Text = Resource.Button_Stop;
+            brnClear.Text = Resource.Button_Clear;
+            LanguageCh.Text = Resource.LanguageCh;
+            label1.Text = Resource.namm;
         }
 
         private void btnStartServer_Click(object sender, EventArgs e)
@@ -63,11 +96,11 @@ namespace serversil
                     listenThread.Start();
 
                     serverRunning = true;
-                    txtLog.AppendText($"Server {serverPort} portunda dinleniyor...\r\n");
+                    txtLog.AppendText(Resource.Msg_ServerStartSuccess + "\r\n");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Server başlatılamadı: " + ex.Message);
+                    MessageBox.Show(Resource.Msg_ServerStartFail + " " + ex.Message);
                 }
             }
         }
@@ -99,7 +132,6 @@ namespace serversil
                     if (!string.IsNullOrEmpty(message))
                     {
                         string clientIP = ((IPEndPoint)client.Client.RemoteEndPoint).Address.ToString();
-
                         string[] parts = message.Split(',');
                         if (parts.Length != 3) return;
                         string ad = parts[0].Trim();
@@ -107,11 +139,11 @@ namespace serversil
                         string yas = parts[2].Trim();
 
                         txtLog.Invoke(new Action(() =>
-                            txtLog.AppendText($"Gelen veri ({clientIP}) → Ad: {ad}, Soyad: {soyad}, Yaş: {yas}\r\n")));
+                            txtLog.AppendText(string.Format(Resource.Msg_ClientDataReceived, clientIP, ad, soyad, yas) + "\r\n")));
 
                         SaveToExcel(clientIP, ad, soyad, yas);
 
-                        if (ad.ToLower() == "first" && soyad.ToLower() == "second")
+                        if (ad.ToLower() == "bilal" && soyad.ToLower() == "koc")
                         {
                             txtLog.Invoke(new Action(() =>
                             {
@@ -125,7 +157,7 @@ namespace serversil
                 catch (Exception ex)
                 {
                     txtLog.Invoke(new Action(() =>
-                        txtLog.AppendText("Hata: " + ex.Message + "\r\n")));
+                        txtLog.AppendText(Resource.Msg_DataError + " " + ex.Message + "\r\n")));
                 }
             }
         }
@@ -151,7 +183,7 @@ namespace serversil
             catch (Exception ex)
             {
                 txtLog.Invoke(new Action(() =>
-                    txtLog.AppendText("Excel kaydetme hatası: " + ex.Message + "\r\n")));
+                    txtLog.AppendText(Resource.Msg_ExcelSaveError + " " + ex.Message + "\r\n")));
             }
         }
 
@@ -161,9 +193,14 @@ namespace serversil
             {
                 serverRunning = false;
                 listener.Stop();
-                txtLog.AppendText("Server durduruldu.\r\n");
+                txtLog.AppendText(Resource.Msg_ServerStop + "\r\n");
             }
             catch { }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtLog.Clear();
         }
 
         private void AlertTimer_Tick(object sender, EventArgs e)
@@ -178,9 +215,14 @@ namespace serversil
             if (alertCounter >= 4)
             {
                 alertTimer.Stop();
-                btnAlert.BackColor = SystemColors.Control; 
+                btnAlert.BackColor = SystemColors.Control;
                 alertCounter = 0;
             }
+        }
+
+        private void brnClear_Click(object sender, EventArgs e)
+        {
+            txtLog.Clear();
         }
     }
 }

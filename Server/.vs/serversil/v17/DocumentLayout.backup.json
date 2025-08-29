@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\My Projects\\C#\\SocketProgramming\\Server\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3DDA92B2-C298-4F43-9C05-929DC1AE381A}|serversil.csproj|D:\\My Projects\\C#\\SocketProgramming\\Server\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3DDA92B2-C298-4F43-9C05-929DC1AE381A}|serversil.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3DDA92B2-C298-4F43-9C05-929DC1AE381A}|serversil.csproj|d:\\my projects\\c#\\socketprogramming\\server\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3DDA92B2-C298-4F43-9C05-929DC1AE381A}|serversil.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DDA92B2-C298-4F43-9C05-929DC1AE381A}|serversil.csproj|d:\\my projects\\c#\\socketprogramming\\server\\resource.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{3DDA92B2-C298-4F43-9C05-929DC1AE381A}|serversil.csproj|solutionrelative:resource.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DDA92B2-C298-4F43-9C05-929DC1AE381A}|serversil.csproj|D:\\My Projects\\C#\\SocketProgramming\\Server\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3DDA92B2-C298-4F43-9C05-929DC1AE381A}|serversil.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,24 +22,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 164,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Form1.cs",
               "DocumentMoniker": "D:\\My Projects\\C#\\SocketProgramming\\Server\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "D:\\My Projects\\C#\\SocketProgramming\\Server\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAALQAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAowFEAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-26T06:57:13.673Z",
+              "WhenOpened": "2025-08-28T13:10:11.474Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "Resource.resx",
+              "DocumentMoniker": "D:\\My Projects\\C#\\SocketProgramming\\Server\\Resource.resx",
+              "RelativeDocumentMoniker": "Resource.resx",
+              "ToolTip": "D:\\My Projects\\C#\\SocketProgramming\\Server\\Resource.resx",
+              "RelativeToolTip": "Resource.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-08-28T12:02:58.402Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "D:\\My Projects\\C#\\SocketProgramming\\Server\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",

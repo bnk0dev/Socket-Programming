@@ -1,6 +1,9 @@
-﻿using System;
+﻿using clientsil.Properties;
+using System;
+using System.Globalization;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace clientsil
@@ -15,23 +18,56 @@ namespace clientsil
             this.MaximizeBox = false;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
+            // Dil seçenekleri
+            comboBoxLanguage.Items.Add("Türkçe");
+            comboBoxLanguage.Items.Add("English");
+            comboBoxLanguage.SelectedIndex = 0; 
+            comboBoxLanguage.SelectedIndexChanged += comboBoxLanguage_SelectedIndexChanged;
+
+            ApplyLanguage();
+        }
+
+        private void comboBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxLanguage.SelectedItem.ToString() == "English")
+                SetLanguage("en");
+            else
+                SetLanguage("tr");
+
+            ApplyLanguage();
+        }
+
+        private void SetLanguage(string cultureCode)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureCode);
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureCode);
+        }
+
+        private void ApplyLanguage()
+        {
+            this.Text = Resource.App_Title;
+            lblServerIP.Text = Resource.Label_ServerIP;
+            lblInput.Text = Resource.Label_Input;
+            btnSendData.Text = Resource.Button_Send;
+            LanguageCh.Text = Resource.lang;
+            label1.Text = Resource.namm;
         }
 
         private void btnSendData_Click(object sender, EventArgs e)
         {
             string serverIP = textBoxServerIP.Text.Trim();
-            string input = txtInput.Text.Trim(); 
+            string input = txtInput.Text.Trim();
 
             if (string.IsNullOrEmpty(serverIP) || string.IsNullOrEmpty(input))
             {
-                MessageBox.Show("Lütfen Sunucu IP ve veriyi giriniz!");
+                MessageBox.Show(Resource.Msg_MissingFields);
                 return;
             }
 
             string[] parts = input.Split(',');
             if (parts.Length != 3)
             {
-                MessageBox.Show("Lütfen veriyi 'Ad,Soyad,Yaş' formatında giriniz!");
+                MessageBox.Show(Resource.Msg_WrongFormat);
                 return;
             }
 
@@ -43,11 +79,11 @@ namespace clientsil
             {
                 string dataPacket = $"{ad},{soyad},{yas}";
                 SendData(serverIP, dataPacket);
-                MessageBox.Show("Veri başarıyla gönderildi.");
+                MessageBox.Show(Resource.Msg_SendSuccess);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Veri gönderim hatası: " + ex.Message);
+                MessageBox.Show(Resource.Msg_SendError + " " + ex.Message);
             }
         }
 
